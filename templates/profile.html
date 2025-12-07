@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RB IDOR Lab - Vulnerable Profile</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+
+<nav class="bg-blue-700 p-4 flex justify-between">
+    <h2 class="font-bold text-xl">RB IDOR Lab</h2>
+    <a href="/logout" class="bg-red-500 px-4 py-1 rounded hover:bg-red-400">Logout</a>
+</nav>
+
+<div class="p-6">
+    <div class=" bg-red-700 text-center p-3 rounded mb-5">
+        ⚠️ This Profile Page is Vulnerable to IDOR
+    </div>
+
+    <div class="bg-gray-800 p-5 rounded-xl shadow-xl">
+        <h3 class="font-bold text-2xl mb-4">{{ user.full_name }}</h3>
+
+        <p class="text-gray-300"><b>Username:</b> {{ user.username }}</p>
+        <p class="text-gray-300"><b>Email:</b> {{ user.email }}</p>
+        <p class="text-gray-300"><b>Role:</b> {{ user.role }}</p>
+        <p class="text-gray-300"><b>Balance:</b> ₹{{ user.balance }}</p>
+    </div>
+
+    <div class="mt-6">
+        <p class="text-gray-400">Try IDOR attack by changing ID in URL 👇</p>
+        <code class="bg-gray-700 p-2 block rounded mt-2">/profile?id=1</code>
+    </div>
+
+    <div class="mt-6">
+        <a href="/profile-secure" class="px-4 py-2 bg-green-600 rounded hover:bg-green-500">Go to Secure Version</a>
+    </div>
+</div>
+
+</body>
+</html>
